@@ -19,7 +19,7 @@
         position: relative;
     width: 100%;
     height: 500px;
-    background: url('../images/AIPicture.jpeg') center/cover no-repeat scroll;
+    background: url('AIPicture.jpeg') center/cover no-repeat scroll;
     display: flex;
     flex-direction: column;   /* stack items vertically */
     justify-content: center;  /* center vertically */
@@ -138,3 +138,4 @@
         font-family: Arial, sans-serif;
         margin: 0;
     }
+
