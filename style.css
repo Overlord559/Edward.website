@@ -147,6 +147,22 @@ strong {
   background: linear-gradient(180deg, var(--obsidian), var(--navy) 40%, var(--obsidian));
   border-block: 1px solid var(--line);
 }
+#work {
+  overflow: hidden;
+}
+#work::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(180deg, rgba(10, 14, 20, 0.83) 0%, rgba(10, 14, 20, 0.8) 50%, rgba(10, 14, 20, 0.85) 100%),
+    url("assets/work-bg.png") top center / cover no-repeat;
+}
+#work > .container {
+  position: relative;
+  z-index: 1;
+}
 
 /* ---------- Section header (dossier index) ---------- */
 .sec-head {
@@ -450,8 +466,8 @@ strong {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(10, 14, 20, 0.55) 0%, rgba(10, 14, 20, 0.35) 40%, rgba(10, 14, 20, 0.92) 100%),
-    linear-gradient(90deg, rgba(10, 14, 20, 0.85) 0%, rgba(10, 14, 20, 0.2) 60%);
+    linear-gradient(180deg, rgba(10, 14, 20, 0.4) 0%, rgba(10, 14, 20, 0.2) 40%, rgba(10, 14, 20, 0.77) 100%),
+    linear-gradient(90deg, rgba(10, 14, 20, 0.7) 0%, rgba(10, 14, 20, 0.05) 60%);
 }
 .hero__grid {
   position: absolute;
@@ -665,6 +681,22 @@ body.is-ready .hero__scroll { animation-delay: 1.3s; }
 .section--service {
   background: linear-gradient(180deg, var(--obsidian), #0c1422 50%, var(--obsidian));
   border-block: 1px solid var(--line);
+  overflow: hidden;
+}
+.section--service::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(120% 90% at 78% 8%, rgba(255, 122, 61, 0.14), transparent 52%),
+    linear-gradient(180deg, rgba(10, 14, 20, 0.88) 0%, rgba(12, 20, 34, 0.74) 45%, rgba(10, 14, 20, 0.94) 100%),
+    url("assets/service-bg.png") center / cover no-repeat;
+  filter: saturate(0.9);
+}
+.section--service > .container {
+  position: relative;
+  z-index: 1;
 }
 .service__grid {
   display: grid;
@@ -796,6 +828,12 @@ body.is-ready .hero__scroll { animation-delay: 1.3s; }
   color: var(--haze);
   font-size: 1.05rem;
   margin-bottom: 1.4rem;
+  background: rgba(10, 14, 20, 0.55);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0.85rem 1.1rem;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 }
 
 /* ---------- Carousel ---------- */
@@ -925,6 +963,23 @@ body.is-ready .hero__scroll { animation-delay: 1.3s; }
 }
 
 /* ---------- CONTACT ---------- */
+#contact {
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+}
+#contact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(180deg, rgba(10, 14, 20, 0.63) 0%, rgba(10, 14, 20, 0.47) 38%, rgba(10, 14, 20, 0.8) 100%),
+    url("assets/contact-bg.png") center / cover no-repeat;
+}
+#contact > .container {
+  position: relative;
+  z-index: 1;
+}
 .contact__inner {
   max-width: 760px;
 }
@@ -933,6 +988,12 @@ body.is-ready .hero__scroll { animation-delay: 1.3s; }
   font-size: 1.15rem;
   margin-bottom: 2.4rem;
   max-width: 52ch;
+  background: rgba(10, 14, 20, 0.55);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 }
 .contact__links {
   display: grid;
