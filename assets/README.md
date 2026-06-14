@@ -11,7 +11,7 @@ placeholder (navy + ember reticle) instead of a broken image.
 | ------------------------- | ---------------- | --------------------- | --------------------------------------------------------------------- |
 | `hero-bg.png`             | Hero background  | 2400×1400 (landscape) | Moody, atmospheric (mountains / sky). Dark areas read best; a gradient overlay is applied. If missing, the hero falls back to a cinematic gradient. |
 | `edward-portrait.png`     | About            | 800×1000 (4:5)        | Clean portrait. Rendered with a subtle desaturation.                  |
-| `edward-military.jpg`     | Service section  | 1200×800 (3:2)        | Dignified service photo. Treated restrained / slightly desaturated.   |
+| `edward-military.png`     | Service section  | 1200×800 (3:2)        | Dignified service photo. Treated restrained / slightly desaturated.   |
 
 ## Project screenshots
 

@@ -27,7 +27,7 @@
   var PLACEHOLDER = {
     hero: { w: 1600, h: 900, label: "Cinematic Hero", sub: "assets/hero-bg.png" },
     portrait: { w: 800, h: 1000, label: "Portrait", sub: "assets/edward-portrait.png" },
-    service: { w: 1200, h: 800, label: "Service Photo", sub: "assets/edward-military.jpg" },
+    service: { w: 1200, h: 800, label: "Service Photo", sub: "assets/edward-military.png" },
     shot: { w: 1600, h: 1000, label: "Screenshot", sub: "Visual pending" }
   };
 
