@@ -25,7 +25,7 @@
      real file at the same path later and it just works.
   --------------------------------------------------- */
   var PLACEHOLDER = {
-    hero: { w: 1600, h: 900, label: "Cinematic Hero", sub: "assets/hero-bg.png" },
+    hero: { w: 1600, h: 900, label: "Cinematic Hero", sub: "assets/hero-bg-v2.png" },
     portrait: { w: 800, h: 1000, label: "Portrait", sub: "assets/edward-portrait.png" },
     service: { w: 1200, h: 800, label: "Service Photo", sub: "assets/edward-military.png" },
     shot: { w: 1600, h: 1000, label: "Screenshot", sub: "Visual pending" }
@@ -244,10 +244,13 @@
     var target = parseInt(el.getAttribute("data-count"), 10);
     var suffix = el.getAttribute("data-suffix") || "";
     if (isNaN(target)) return;
+    var finalText = String(target) + suffix;
     if (reduceMotion) {
-      el.textContent = target + suffix;
+      el.textContent = finalText;
       return;
     }
+    // Static HTML already shows the final value for no-JS/ATS readers.
+    if (el.textContent.trim() === finalText) return;
     var dur = 1100, start = null;
     function step(ts) {
       if (start === null) start = ts;
