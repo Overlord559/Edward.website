@@ -188,6 +188,232 @@
   }
 
   /* ---------------------------------------------------
+     Reusable lightbox — one modal serves every carousel.
+     Click/tap a screenshot (or the Enlarge hint) to open
+     it full-screen with prev/next, zoom, and keyboard
+     support. If this fails, carousels keep working.
+  --------------------------------------------------- */
+  function initLightbox() {
+    var carousels = document.querySelectorAll("[data-carousel]");
+    if (!carousels.length || !document.body) return;
+
+    var ICON = {
+      close: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+      prev: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 18l-6-6 6-6"/></svg>',
+      next: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 6l6 6-6 6"/></svg>',
+      zoomIn: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>',
+      zoomOut: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M8 11h6"/></svg>',
+      reset: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v4h4"/></svg>',
+      mag: '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg>'
+    };
+
+    var overlay = document.createElement("div");
+    overlay.className = "lightbox";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.setAttribute("aria-label", "Project screenshot viewer");
+    overlay.hidden = true;
+    overlay.innerHTML =
+      '<div class="lightbox__backdrop" data-lightbox-close></div>' +
+      '<div class="lightbox__counter mono" data-lightbox-counter></div>' +
+      '<div class="lightbox__stage" data-lightbox-stage>' +
+        '<img class="lightbox__img" alt="" data-lightbox-img draggable="false" />' +
+      "</div>" +
+      '<p class="lightbox__caption" data-lightbox-caption></p>' +
+      '<button class="lightbox__btn lightbox__close" type="button" data-lightbox-close aria-label="Close viewer (Escape)">' + ICON.close + "</button>" +
+      '<button class="lightbox__btn lightbox__nav lightbox__prev" type="button" data-lightbox-prev aria-label="Previous image (Left arrow)">' + ICON.prev + "</button>" +
+      '<button class="lightbox__btn lightbox__nav lightbox__next" type="button" data-lightbox-next aria-label="Next image (Right arrow)">' + ICON.next + "</button>" +
+      '<div class="lightbox__zoom-bar" role="group" aria-label="Zoom controls">' +
+        '<button class="lightbox__btn" type="button" data-lightbox-zoomout aria-label="Zoom out (minus key)">' + ICON.zoomOut + "</button>" +
+        '<button class="lightbox__btn" type="button" data-lightbox-zoomreset aria-label="Reset zoom (0 key)">' + ICON.reset + "</button>" +
+        '<button class="lightbox__btn" type="button" data-lightbox-zoomin aria-label="Zoom in (plus key)">' + ICON.zoomIn + "</button>" +
+      "</div>";
+    document.body.appendChild(overlay);
+
+    var imgEl = overlay.querySelector("[data-lightbox-img]");
+    var stageEl = overlay.querySelector("[data-lightbox-stage]");
+    var captionEl = overlay.querySelector("[data-lightbox-caption]");
+    var counterEl = overlay.querySelector("[data-lightbox-counter]");
+    var prevBtn = overlay.querySelector("[data-lightbox-prev]");
+    var nextBtn = overlay.querySelector("[data-lightbox-next]");
+    var closeBtn = overlay.querySelector("[data-lightbox-close]:not(.lightbox__backdrop)") || overlay.querySelector(".lightbox__close");
+
+    var ZMIN = 1, ZMAX = 4, ZSTEP = 0.5;
+    var group = [];
+    var current = 0;
+    var zoom = 1, panX = 0, panY = 0;
+    var lastFocus = null;
+
+    function applyTransform() {
+      imgEl.style.transform =
+        "translate(" + panX + "px," + panY + "px) scale(" + zoom + ")";
+      stageEl.classList.toggle("is-zoomed", zoom > 1);
+    }
+    function setZoom(z) {
+      zoom = Math.min(ZMAX, Math.max(ZMIN, Math.round(z * 100) / 100));
+      if (zoom === 1) { panX = 0; panY = 0; }
+      applyTransform();
+    }
+    function resetZoom() {
+      zoom = 1; panX = 0; panY = 0; applyTransform();
+    }
+
+    function render() {
+      var item = group[current];
+      if (!item) return;
+      resetZoom();
+      imgEl.src = item.src;
+      imgEl.alt = item.alt || "Project screenshot";
+      captionEl.textContent = item.alt || "";
+      var multi = group.length > 1;
+      counterEl.textContent = multi ? current + 1 + " / " + group.length : "";
+      prevBtn.hidden = !multi;
+      nextBtn.hidden = !multi;
+    }
+
+    function next() { if (group.length > 1) { current = (current + 1) % group.length; render(); } }
+    function prev() { if (group.length > 1) { current = (current - 1 + group.length) % group.length; render(); } }
+
+    function focusables() {
+      var nodes = overlay.querySelectorAll("button");
+      return Array.prototype.filter.call(nodes, function (el) {
+        return !el.hidden && el.offsetParent !== null;
+      });
+    }
+    function trapFocus(e) {
+      var f = focusables();
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault(); last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault(); first.focus();
+      }
+    }
+    function onKey(e) {
+      switch (e.key) {
+        case "Escape": e.preventDefault(); close(); break;
+        case "ArrowRight": e.preventDefault(); next(); break;
+        case "ArrowLeft": e.preventDefault(); prev(); break;
+        case "+": case "=": e.preventDefault(); setZoom(zoom + ZSTEP); break;
+        case "-": case "_": e.preventDefault(); setZoom(zoom - ZSTEP); break;
+        case "0": e.preventDefault(); resetZoom(); break;
+        case "Tab": trapFocus(e); break;
+      }
+    }
+
+    function open(items, index, trigger) {
+      if (!items || !items.length) return;
+      group = items;
+      current = Math.min(Math.max(index || 0, 0), items.length - 1);
+      lastFocus = trigger && typeof trigger.focus === "function" ? trigger : null;
+      overlay.hidden = false;
+      document.body.classList.add("lightbox-open");
+      render();
+      if (closeBtn) closeBtn.focus();
+      document.addEventListener("keydown", onKey, true);
+    }
+    function close() {
+      overlay.hidden = true;
+      document.body.classList.remove("lightbox-open");
+      document.removeEventListener("keydown", onKey, true);
+      imgEl.removeAttribute("src");
+      resetZoom();
+      if (lastFocus) lastFocus.focus();
+      lastFocus = null;
+    }
+
+    if (nextBtn) nextBtn.addEventListener("click", next);
+    if (prevBtn) prevBtn.addEventListener("click", prev);
+    overlay.querySelector("[data-lightbox-zoomin]").addEventListener("click", function () { setZoom(zoom + ZSTEP); });
+    overlay.querySelector("[data-lightbox-zoomout]").addEventListener("click", function () { setZoom(zoom - ZSTEP); });
+    overlay.querySelector("[data-lightbox-zoomreset]").addEventListener("click", resetZoom);
+
+    var closers = overlay.querySelectorAll("[data-lightbox-close]");
+    for (var c = 0; c < closers.length; c++) {
+      closers[c].addEventListener("click", function (e) {
+        e.preventDefault();
+        close();
+      });
+    }
+
+    stageEl.addEventListener("dblclick", function () {
+      setZoom(zoom > 1 ? 1 : 2);
+    });
+
+    // Drag-to-pan when zoomed in
+    var panning = false, startPx = 0, startPy = 0, baseX = 0, baseY = 0;
+    stageEl.addEventListener("pointerdown", function (e) {
+      if (zoom <= 1) return;
+      panning = true;
+      startPx = e.clientX; startPy = e.clientY;
+      baseX = panX; baseY = panY;
+      stageEl.classList.add("is-panning");
+      try { stageEl.setPointerCapture(e.pointerId); } catch (err) {}
+    });
+    stageEl.addEventListener("pointermove", function (e) {
+      if (!panning) return;
+      panX = baseX + (e.clientX - startPx);
+      panY = baseY + (e.clientY - startPy);
+      applyTransform();
+    });
+    function endPan() {
+      if (!panning) return;
+      panning = false;
+      stageEl.classList.remove("is-panning");
+    }
+    stageEl.addEventListener("pointerup", endPan);
+    stageEl.addEventListener("pointercancel", endPan);
+
+    function buildItems(slides) {
+      var items = [];
+      for (var i = 0; i < slides.length; i++) {
+        var img = slides[i].querySelector("img");
+        if (!img) continue;
+        items.push({
+          src: img.currentSrc || img.src,
+          alt: img.getAttribute("alt") || ""
+        });
+      }
+      return items;
+    }
+    function activeIndex(slides) {
+      for (var i = 0; i < slides.length; i++) {
+        if (slides[i].getAttribute("aria-hidden") !== "true") return i;
+      }
+      return 0;
+    }
+
+    for (var n = 0; n < carousels.length; n++) {
+      (function (carousel) {
+        var slides = carousel.querySelectorAll(".carousel__slide");
+        if (!slides.length) return;
+
+        var trigger = document.createElement("button");
+        trigger.type = "button";
+        trigger.className = "carousel__zoom";
+        trigger.setAttribute("aria-label", "Enlarge screenshot");
+        trigger.innerHTML = ICON.mag + "<span>Enlarge</span>";
+        trigger.addEventListener("click", function () {
+          open(buildItems(slides), activeIndex(slides), trigger);
+        });
+        carousel.appendChild(trigger);
+
+        for (var s = 0; s < slides.length; s++) {
+          (function (slideIndex) {
+            var img = slides[slideIndex].querySelector("img");
+            if (!img) return;
+            img.classList.add("is-zoomable");
+            img.addEventListener("click", function () {
+              open(buildItems(slides), slideIndex, trigger);
+            });
+          })(s);
+        }
+      })(carousels[n]);
+    }
+  }
+
+  /* ---------------------------------------------------
      Mobile nav
   --------------------------------------------------- */
   function initNav() {
@@ -303,6 +529,7 @@
     setYear();
     wireImageFallbacks();
     initAllCarousels();
+    initLightbox();
     initNav();
     initScrollUI();
     initReveal();
