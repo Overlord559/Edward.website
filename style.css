@@ -824,6 +824,24 @@ body.is-ready .hero__scroll { animation-delay: 1.3s; }
   font-weight: 600;
   margin-bottom: 0.9rem;
 }
+.project__sub {
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--signal);
+  margin-top: -0.55rem;
+  margin-bottom: 1rem;
+}
+.project__modules {
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: var(--haze);
+  margin-bottom: 1.4rem;
+}
+.project__modules strong {
+  color: var(--paper);
+  font-weight: 600;
+}
 .project__desc {
   color: var(--haze);
   font-size: 1.05rem;
