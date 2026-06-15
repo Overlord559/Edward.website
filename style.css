@@ -842,6 +842,26 @@ body.is-ready .hero__scroll { animation-delay: 1.3s; }
   color: var(--paper);
   font-weight: 600;
 }
+.project__module-notes {
+  list-style: none;
+  margin: -0.65rem 0 1.2rem;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.76rem;
+  line-height: 1.55;
+  color: var(--haze);
+  background: rgba(10, 14, 20, 0.42);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+.project__module-notes li + li {
+  margin-top: 0.35rem;
+}
+.project__module-notes strong {
+  color: var(--paper);
+  font-weight: 600;
+}
 .project__desc {
   color: var(--haze);
   font-size: 1.05rem;
