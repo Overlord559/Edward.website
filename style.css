@@ -1058,6 +1058,12 @@ body.is-ready .hero__scroll { animation-delay: 1.3s; }
 .carousel__slide.is-placeholder img {
   object-fit: contain;
 }
+/* Tall UI screenshots (e.g. MissionDesk) — show full frame in card preview */
+.carousel--contain .carousel__slide img {
+  object-fit: contain;
+  object-position: top center;
+  background: var(--navy);
+}
 .carousel__btn {
   position: absolute;
   top: 50%;
@@ -1201,9 +1207,11 @@ body.is-ready .hero__scroll { animation-delay: 1.3s; }
   display: flex;
   align-items: center;
   justify-content: center;
+  width: fit-content;
+  height: fit-content;
   max-width: min(1100px, 92vw);
-  max-height: 80vh;
-  overflow: hidden;
+  max-height: 82vh;
+  overflow: visible;
   background: var(--navy);
   border: 1px solid var(--line-strong);
   border-radius: 10px;
@@ -1212,6 +1220,9 @@ body.is-ready .hero__scroll { animation-delay: 1.3s; }
 }
 .lightbox__stage.is-zoomed {
   cursor: grab;
+  overflow: hidden;
+  max-width: min(1100px, 92vw);
+  max-height: 82vh;
 }
 .lightbox__stage.is-panning {
   cursor: grabbing;
@@ -1219,10 +1230,11 @@ body.is-ready .hero__scroll { animation-delay: 1.3s; }
 .lightbox__img {
   display: block;
   max-width: min(1100px, 92vw);
-  max-height: 80vh;
+  max-height: 82vh;
   width: auto;
   height: auto;
   object-fit: contain;
+  object-position: center;
   transform-origin: center center;
   transition: transform 0.2s var(--ease);
   user-select: none;
