@@ -38,14 +38,16 @@ Dots and navigation update automatically.
 
 ### BidSignal screenshot status (2026-06-24)
 
-| File | Status |
-| ---- | ------ |
-| `bidsignal-05-pricing.png` | **Fresh** — current pricing tiers capture |
-| `bidsignal-01-discover.png` | Legacy placeholder (repurposed from pre-folder assets) — replace when fresh Discover capture available |
-| `bidsignal-02-opportunity-detail-cmmc.png` | Legacy placeholder — replace with current opportunity detail |
-| `bidsignal-03-queue.png` | Legacy placeholder — replace with current Today's Queue |
-| `bidsignal-04-targeting-profile.png` | Legacy placeholder — replace with current targeting profile |
-| `bidsignal-06-account.png` | Legacy / auth-gated placeholder — replace when safe account screen capture exists |
+All six carousel slides are **fresh signed-in private-beta captures** (1440×1000 PNG) from local demo (`localhost:3000`). No desktop wallpaper, sign-in screens, email, API keys, or billing IDs included.
+
+| File | Route | Status |
+| ---- | ----- | ------ |
+| `bidsignal-01-discover.png` | `/discover` | **Fresh** — ranked opportunity cards |
+| `bidsignal-02-opportunity-detail-cmmc.png` | `/opportunities/[id]` | **Fresh** — quick decision, strategic path, bid reality |
+| `bidsignal-03-queue.png` | `/queue` | **Fresh** — Today's Queue |
+| `bidsignal-04-targeting-profile.png` | `/targeting-profile` | **Fresh** — workspace targeting profile |
+| `bidsignal-05-pricing.png` | `/pricing` | **Fresh** — pricing tiers |
+| `bidsignal-06-account.png` | `/account` | **Fresh** — billing & account (no PII) |
 
 Legacy root files `bidsignal-1.png` … `bidsignal-5.png` are **not referenced** in `index.html`; safe to archive.
 

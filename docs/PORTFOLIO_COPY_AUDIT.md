@@ -29,7 +29,7 @@
 
 ## Screenshots still needing replacement
 
-- BidSignal: `01`–`04`, `06` (legacy placeholders); `05-pricing` is current
+- ~~BidSignal: `01`–`04`, `06` (legacy placeholders); `05-pricing` is current~~ **Done 2026-06-24** — all six BidSignal carousel slides recaptured at 1440×1000 from signed-in local demo
 - All other project carousels: paths resolve; no broken references
 
 ## Next portfolio update
