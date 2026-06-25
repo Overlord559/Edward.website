@@ -25,7 +25,7 @@
     rel="stylesheet"
   />
 
-  <link rel="stylesheet" href="style.css?v=12" />
+  <link rel="stylesheet" href="style.css?v=13" />
 
   <!-- No-JS: reveal everything, stack carousel slides, hide controls. -->
   <noscript>
@@ -450,7 +450,7 @@
               <i class="reticle__tl"></i><i class="reticle__tr"></i>
               <i class="reticle__bl"></i><i class="reticle__br"></i>
             </span>
-            <div class="carousel" data-carousel aria-roledescription="carousel" aria-label="StoneOS / Operator Brain screenshots">
+            <div class="carousel carousel--contain" data-carousel aria-roledescription="carousel" aria-label="StoneOS / Operator Brain screenshots">
               <div class="carousel__viewport">
                 <ul class="carousel__track" data-carousel-track>
                   <li class="carousel__slide" role="group" aria-roledescription="slide"><img src="assets/operator-brain-1-v2.png" alt="StoneOS / Operator Brain JARVIS command center cockpit routing outreach, delivery, and knowledge workflow nodes for cross-project AI execution." loading="lazy" decoding="async" data-fallback="shot" /></li>
@@ -473,24 +473,21 @@
               <span><strong>Created</strong> May 2026</span>
               <span><strong>Last updated</strong> June 2026</span>
             </div>
+            <p class="project__card-copy">
+              Local operator cockpit for routing high-context work across repos, docs, and AI agents.
+            </p>
             <p class="project__desc">
-              StoneOS / JARVIS is my cross-project AI command layer for routing high-context work across
-              ventures, repos, docs, and agents. <strong>GlassFlow</strong> adds a passive cyber-trust layer for
-              findings, repo and site scans, and remediation evidence; <strong>RedFlow</strong> adds a defensive
-              owned-scope attack-surface lab for CIA impact modeling and security thinking;
-              <strong>Prompt Queue</strong> turns BRAIN_INDEX startup rules into routed prompts for Cursor,
-              Claude, and Codex.
+              Stone Industries OS (Stone Command Library) holds company-wide prompts and playbooks.
+              Operator Brain is the active execution cockpit and current-state memory.
+              The Control Center / JARVIS app is the localhost UI — Night List, GlassFlow trust scans,
+              RedFlow defensive modeling, and Prompt Queue assembly for Cursor, Claude, and Codex.
             </p>
-            <ul class="project__module-notes mono" aria-label="StoneOS module summary">
-              <li><strong>GlassFlow:</strong> passive trust scans + evidence ledger</li>
-              <li><strong>RedFlow:</strong> defensive attack-surface modeling</li>
-              <li><strong>Prompt Queue:</strong> routed agent prompt assembly</li>
-            </ul>
-            <p class="project__modules mono">
-              <strong>Modules:</strong> BRAIN_INDEX · JARVIS · GlassFlow · RedFlow · Prompt Queue · Agent Contracts · Evidence Gates · Workflow OS
-            </p>
+            <div class="project__links">
+              <span class="project__link project__link--primary project__link--static">Local Demo</span>
+            </div>
+            <p class="project__trust mono">Local operator system — not a production enterprise OS. Runs on localhost with evidence-first gates; no auto-send or live CRM writes without approval.</p>
             <ul class="tags tags--accent" aria-label="StoneOS / Operator Brain technologies">
-              <li>Claude</li><li>Cursor</li><li>Codex</li><li>GlassFlow</li><li>RedFlow</li><li>Agent Routing</li><li>Prompt Architecture</li><li>Evidence Gates</li><li>Workflow OS</li>
+              <li>Claude</li><li>Cursor</li><li>Codex</li><li>GlassFlow</li><li>RedFlow</li><li>Agent Routing</li><li>Prompt Architecture</li><li>Local-First</li>
             </ul>
           </div>
         </article>
@@ -532,24 +529,14 @@
             <p class="project__desc">
               BidSignal helps small contractors discover realistic federal opportunities, compare SAM.gov notices
               against workspace targeting, inspect USAspending-backed market signals, and decide whether to bid,
-              review, watch, pass, prime, team, or subcontract. Scores support the decision — they do not replace
-              capture judgment or guarantee awards.
+              review, watch, pass, prime, team, or subcontract.
             </p>
-            <ul class="project__module-notes mono" aria-label="BidSignal feature summary">
-              <li>SAM.gov discovery with Postgres-backed inventory (549 catalog rows; 196 Discover-visible open opportunities validated June 2026)</li>
-              <li>Workspace targeting profile with NAICS and fit signals</li>
-              <li>Discover ranking with scope fit, bid effort, and recommended action</li>
-              <li>Opportunity detail with bid reality and official-source verification</li>
-              <li>CMMC/CUI/DFARS bid-risk screening — read-path Phase 0 only</li>
-              <li>Today&apos;s Queue for time-sensitive pursuit decisions</li>
-              <li>Stripe + Clerk-ready private beta foundation (326 tests passing, 2 skipped)</li>
-            </ul>
-            <p class="project__links mono" aria-label="BidSignal availability">
-              <strong>Status:</strong> Private beta / launch candidate — local and invite-only demo. No public SaaS deployment yet. Repository is private.
-            </p>
-            <p class="project__trust mono">Private beta build. No fake users, revenue, customers, certifications, contracts, or award guarantees. CMMC/CUI screening flags solicitation language only — it does not certify compliance or readiness. Human review required before bid decisions.</p>
+            <div class="project__links">
+              <span class="project__link project__link--primary project__link--static">Private Beta</span>
+            </div>
+            <p class="project__trust mono">Private beta / launch candidate. Local and invite-only demo. Repository is private. AI support is advisory only; capture judgment stays with the contractor. Validated beta: tests passing, build passing, Postgres smoke passing.</p>
             <ul class="tags tags--accent" aria-label="BidSignal technologies">
-              <li>Next.js</li><li>TypeScript</li><li>Postgres</li><li>Supabase</li><li>SAM.gov</li><li>USAspending</li><li>Stripe</li><li>Clerk</li><li>Tailwind</li><li>Vitest</li><li>Civic Tech</li>
+              <li>Next.js</li><li>TypeScript</li><li>Postgres</li><li>Supabase</li><li>SAM.gov</li><li>USAspending</li><li>Stripe</li><li>Clerk</li><li>Tailwind</li>
             </ul>
           </div>
         </article>
@@ -561,7 +548,7 @@
               <i class="reticle__tl"></i><i class="reticle__tr"></i>
               <i class="reticle__bl"></i><i class="reticle__br"></i>
             </span>
-            <div class="carousel" data-carousel aria-roledescription="carousel" aria-label="Opslayer screenshots">
+            <div class="carousel carousel--contain" data-carousel aria-roledescription="carousel" aria-label="Opslayer screenshots">
               <div class="carousel__viewport">
                 <ul class="carousel__track" data-carousel-track>
                   <li class="carousel__slide" role="group" aria-roledescription="slide"><img src="assets/opslayer-1.png" alt="Opslayer Daily Top 10 Jobs command center with pipeline automation controls." loading="lazy" decoding="async" data-fallback="shot" /></li>
@@ -579,16 +566,25 @@
           <div class="project__info">
             <p class="project__index mono" aria-hidden="true">Project 05</p>
             <h3 class="project__title">Opslayer</h3>
+            <p class="project__sub mono">Personal Job Search Pipeline</p>
             <div class="project__meta mono" aria-label="Opslayer project dates">
               <span><strong>Created</strong> February 2026</span>
-              <span><strong>Last updated</strong> April 2026</span>
+              <span><strong>Last updated</strong> June 2026</span>
             </div>
-            <p class="project__desc">
-              An AI job-search pipeline that scans portals, scores roles, and drafts tailored, ATS-ready
-              application materials — with durable checkpoints and a human in the loop before anything ships.
+            <p class="project__card-copy">
+              Paste listings → score ATS match → draft tailored materials → track pipeline with a human in the loop.
             </p>
+            <p class="project__desc">
+              Opslayer is a local-first AI job search pipeline for scanning portals, scoring role fit,
+              drafting ATS-ready application materials, and tracking follow-ups — with durable checkpoints
+              and operator review before anything ships.
+            </p>
+            <div class="project__links">
+              <span class="project__link project__link--primary project__link--static">Private Repo</span>
+            </div>
+            <p class="project__trust mono">Personal tooling. Local CLI workflows only — not a public SaaS or deployed service.</p>
             <ul class="tags tags--accent" aria-label="Opslayer technologies">
-              <li>Node.js</li><li>Playwright</li><li>Claude</li><li>Automation</li><li>CLI Tooling</li>
+              <li>Node.js</li><li>Playwright</li><li>Claude</li><li>Automation</li><li>CLI Tooling</li><li>Local-First</li>
             </ul>
           </div>
         </article>

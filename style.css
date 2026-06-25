@@ -1018,6 +1018,10 @@ body.is-ready .hero__scroll { animation-delay: 1.3s; }
 .project__link--primary:hover {
   background: rgba(255, 122, 61, 0.2);
 }
+.project__link--static {
+  cursor: default;
+  pointer-events: none;
+}
 .project__trust {
   font-size: 0.76rem;
   line-height: 1.55;
