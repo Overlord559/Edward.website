@@ -19,7 +19,7 @@ Recommended size: **1600×1000** (16:10), PNG or JPG.
 
 | Project        | Filenames                                       |
 | -------------- | ----------------------------------------------- |
-| BidSignal      | `bidsignal-1.png` … `bidsignal-5.png`           |
+| BidSignal      | `bidsignal/bidsignal-01-discover.png` … `bidsignal-06-account.png` |
 | Opslayer       | `opslayer-1.png` … `opslayer-5.png`             |
 | Operator Brain | `operator-brain-1.png` … `operator-brain-5.png` |
 | MissionDesk AI | `missiondesk/missiondesk-hero.png`, `missiondesk-ticket-intake.png`, `missiondesk-troubleshooting-path.png`, `missiondesk-resolution-builder.png`, `missiondesk-kb-draft.png`, `missiondesk-ops-dashboard.png` |
