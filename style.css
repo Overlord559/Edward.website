@@ -1068,6 +1068,19 @@ body.is-ready .hero__scroll { animation-delay: 1.3s; }
   object-position: top center;
   background: var(--navy);
 }
+/* Stone Colognes — match 1440×1000 captures; avoid shallow 16:10 crop of trio/bottles */
+.project--stone-colognes .carousel {
+  background: #080705;
+}
+.project--stone-colognes .carousel__slide {
+  aspect-ratio: 1440 / 1000;
+  background: #080705;
+}
+.project--stone-colognes .carousel__slide img {
+  object-fit: contain;
+  object-position: top center;
+  background: #080705;
+}
 .carousel__btn {
   position: absolute;
   top: 50%;

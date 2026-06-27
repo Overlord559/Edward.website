@@ -28,6 +28,7 @@ Recommended size: **1440×1000**, PNG or JPG. Carousels use `carousel--contain` 
 | ---------------- | --------- |
 | MissionDesk AI   | `missiondesk/missiondesk-hero.png`, `missiondesk-ticket-intake.png`, `missiondesk-troubleshooting-path.png`, `missiondesk-resolution-builder.png`, `missiondesk-kb-draft.png`, `missiondesk-ops-dashboard.png` |
 | MissionBridge AI | `missionbridge/missionbridge-ai-01-hero.png` … `missionbridge-ai-05-handoff.png` |
+| Stone Colognes   | `projects/stone-colognes/stone-colognes-01-portfolio-overview.png` … `stone-colognes-07-bench-mode.png` |
 | StoneOS / Operator Brain | `operator-brain-1-v2.png` … `operator-brain-5-v3.png` |
 | BidSignal        | `bidsignal/bidsignal-01-discover.png` … `bidsignal-06-account.png` |
 | Opslayer         | `opslayer-1.png` … `opslayer-5.png` |
@@ -50,6 +51,22 @@ All six carousel slides are **fresh signed-in private-beta captures** (1440×100
 | `bidsignal-06-account.png` | `/account` | **Fresh** — billing & account (no PII) |
 
 Legacy root files `bidsignal-1.png` … `bidsignal-5.png` are **not referenced** in `index.html`; safe to archive.
+
+### Stone Colognes screenshot inventory (2026-06)
+
+Seven **portfolio-safe** captures (1440×1000 PNG) copied from `C:\dev\stone-colognes\docs\portfolio-screenshots\` into `assets/projects/stone-colognes/`. Internal sensual fragrance imagery is **not** used. Compare and formula-detail captures were excluded.
+
+| File | Source (Stone Colognes) | Route / purpose |
+| ---- | ------------------------- | --------------- |
+| `stone-colognes-01-portfolio-overview.png` | `…-01-portfolio-overview.png` | `/portfolio` — public overview |
+| `stone-colognes-02-showcase-trio.png` | `…-02-showcase-trio.png` | `/showcase` — signature trio |
+| `stone-colognes-03-cart-optimizer.png` | `…-03-cart-optimizer.png` | `/cart` — kit planning |
+| `stone-colognes-04-ingredients-inventory.png` | `…-04-ingredients-inventory.png` | `/ingredients` — depletion math |
+| `stone-colognes-05-batch-timeline.png` | `…-06-batch-timeline.png` | `/batches` — maceration timeline |
+| `stone-colognes-06-reference-library.png` | `…-07-reference-library.png` | `/reference` — safety & glossary |
+| `stone-colognes-07-bench-mode.png` | `…-09-bench-mode.png` | `/bench/:id` — step-by-step mixing |
+
+**Not used:** `stone-colognes-05-formula-compare.png`, `stone-colognes-08-formula-detail.png` (internal promo art risk).
 
 ### Unreferenced on-disk assets
 
